@@ -15,8 +15,9 @@ import com.boulevard.uitestingarticle.core.model.Plant
 import com.boulevard.uitestingarticle.databinding.FragmentPlantListBinding
 import kotlinx.android.synthetic.main.fragment_plant_list.*
 import android.widget.Toast
+import com.boulevard.uitestingarticle.OpenClass
 
-@OpenForTesting
+@OpenClass
 class PlantListFragment : Fragment() {
 
     lateinit var viewModelFactory: ViewModelProvider.Factory

@@ -6,6 +6,14 @@ apply plugin: 'kotlin-android-extensions'
 
 apply plugin: 'kotlin-kapt'
 
+apply plugin: 'kotlin-allopen'
+
+allOpen {
+    // allows mocking for classes w/o directly opening them for release builds
+    // Important: must specify location within this project
+    annotation 'com.boulevard.uitestingarticle.OpenClass'
+}
+
 android {
     compileSdkVersion 28
     defaultConfig {
