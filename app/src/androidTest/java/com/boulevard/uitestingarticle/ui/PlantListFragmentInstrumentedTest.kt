@@ -51,46 +51,46 @@ class PlantListFragmentInstrumentedTest {
     }
 
     @Test
-    fun givenMainActivity_whenContentVisibilityVisible_thenContentIsShown() {
+    fun givenPlantListFragment_whenContentVisibilityVisible_thenContentIsShown() {
 
-        // Given
+        /* Given */
         plantListLiveData.postValue(Resource.success(fakePlantList))
         whenever(viewModel.getContentVisibility()).thenReturn(View.VISIBLE)
         whenever(viewModel.getLoadingVisibility()).thenReturn(View.GONE)
 
-        // When
+        /* When */
         activityRule.activity.setFragment(plantListFragment)
 
-        // Then
+        /* Then */
         onView(withId(R.id.plant_list_recyclerview)).check(matches(isDisplayed()))
         onView(withId(R.id.progress)).check(matches(not(isDisplayed())))
     }
 
     @Test
-    fun givenMainActivity_whenLoadingVisibilityVisible_thenLoadingIsShown() {
+    fun givenPlantListFragment_whenLoadingVisibilityVisible_thenLoadingIsShown() {
 
-        // Given
+        /* Given */
         plantListLiveData.postValue(Resource.success(fakePlantList))
         whenever(viewModel.getContentVisibility()).thenReturn(View.GONE)
         whenever(viewModel.getLoadingVisibility()).thenReturn(View.VISIBLE)
 
-        // When
+        /* When */
         activityRule.activity.setFragment(plantListFragment)
 
-        // Then
+        /* Then */
         onView(withId(R.id.plant_list_recyclerview)).check(matches(not(isDisplayed())))
         onView(withId(R.id.progress)).check(matches(isDisplayed()))
     }
 
     @Test
-    fun givenMainActivity_whenPlantListItemClicked_thenPlantItemClickedCalled() {
+    fun givenPlantListFragment_whenPlantListItemClicked_thenPlantItemClickedCalled() {
 
-        // Given
+        /* Given */
         plantListLiveData.postValue(Resource.success(fakePlantList))
         whenever(viewModel.getContentVisibility()).thenReturn(View.VISIBLE)
         whenever(viewModel.getLoadingVisibility()).thenReturn(View.GONE)
 
-        // When
+        /* When */
         activityRule.activity.setFragment(plantListFragment)
         onView(withId(R.id.plant_list_recyclerview)).perform(
             RecyclerViewActions
@@ -100,7 +100,7 @@ class PlantListFragmentInstrumentedTest {
                 )
         )
 
-        // Then
+        /* Then */
         verify(viewModel, times(1)).plantItemClicked()
     }
 
